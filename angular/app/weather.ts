@@ -5,4 +5,5 @@ export class Weather{
     name:string="";
     country:string="";
     apikey:string="";
+    username:string;
 }
