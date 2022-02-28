@@ -20,5 +20,8 @@ export class ShowComponent implements OnInit {
     this.weather = this.service.getWeather();
     console.log(this.weather);
   }
+  addFavourite(){
+    this.service.addFavourite(this.weather);
+  }
 
 }

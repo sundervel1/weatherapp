@@ -30,6 +30,13 @@
     <tr>
         <td>{{weather.name}}</td><td>{{weather.main}}</td><td>{{weather.lat}}</td><td>{{weather.lon}}</td><td>{{weather.country}}</td>
     </tr>
+    <tr>
+        <td><br>
+            <form (submit)="addFavourite()">
+            <input type="submit" value="SAVE TO FAVOURITES"/>
+            </form>
+        </td>
+    </tr>
 </table>
 </div>
 

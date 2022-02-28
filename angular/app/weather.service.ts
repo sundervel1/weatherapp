@@ -16,8 +16,7 @@ export class WeatherService {
   constructor(http:HttpClient) { 
     this.http=http;
   }
-  doLogin(login: Login) {
-    
+  doLogin(login: Login) {    
     const header={'content-type': 'application/json'};
     const body=JSON.stringify(login);
     console.log('--'+body);
@@ -32,6 +31,21 @@ export class WeatherService {
           console.log('error from rest call ');
           login.message="Error during login";
        }
+       );
+  }
+  addFavourite(weather: Weather) {
+    const header={'content-type': 'application/json'};
+    const body=JSON.stringify(weather);
+    console.log('--'+body);
+    this.http.post('http://localhost:8585/weather/add',body,{'headers':header})
+       .subscribe(
+         data=>{
+           console.log(data);
+           let dataVal:any = Object.values(data);
+          weather.message='Record stored in favourites for '+weather.username;
+         }, error=>{
+           console.log('error' + error)
+         }
        );
   }
   logOut(login:Login) {
@@ -69,6 +83,10 @@ export class WeatherService {
     this.weather.main=data.weather[0].main;
     this.weather.name=data.name;
     this.weather.country=data.sys.country;
+    let name = sessionStorage.getItem("username");
+    if(name!=null){
+       this.weather.username= name;
+    }
     //console.log("** "+this.weather.lat);
   }
   getWeather(){
