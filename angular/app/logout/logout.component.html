@@ -1,0 +1,9 @@
+<h2>Logout Page</h2>
+<form (submit)="doLogout()" class="form-group">
+<input type="submit" value="LOGOUT FROM APPLICATION"/>
+</form>
+<br>
+<div *ngIf="login.message">
+{{login.message}}
+
+</div>
