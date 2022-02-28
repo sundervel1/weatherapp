@@ -9,7 +9,7 @@ import { WeatherService } from '../weather.service';
 })
 export class ShowComponent implements OnInit {
   weather:Weather=new Weather();
-  
+  savedFav=false;
   constructor(public service:WeatherService) { }
 
   ngOnInit(): void {
@@ -22,6 +22,7 @@ export class ShowComponent implements OnInit {
   }
   addFavourite(){
     this.service.addFavourite(this.weather);
+    this.savedFav=true;
   }
 
 }

@@ -12,9 +12,19 @@ export class WeatherService {
   userName:string;
   weather:Weather=new Weather();
   http:HttpClient;
-  
+  weatherList:Weather[]=[];
   constructor(http:HttpClient) { 
     this.http=http;
+  }
+  getFavorites() {
+    this.weatherList = [];
+    console.log('get fav..')
+    this.http.get('http://localhost:8585/weather/getall/'+sessionStorage.getItem("username"))
+       .subscribe(
+         data=>{
+           this.convertAll(data);
+         }
+       );
   }
   doLogin(login: Login) {    
     const header={'content-type': 'application/json'};
@@ -42,6 +52,7 @@ export class WeatherService {
          data=>{
            console.log(data);
            let dataVal:any = Object.values(data);
+           this.weatherList.push(dataVal);
           weather.message='Record stored in favourites for '+weather.username;
          }, error=>{
            console.log('error' + error)
@@ -53,6 +64,7 @@ export class WeatherService {
     sessionStorage.clear();
     this.loggedIn=false;
     login.message="You have logged out of the system";
+    this.weatherList = [];
     // const header={'content-type': 'application/json'};
     // const body=JSON.stringify(login);
     // console.log('...-'+body);
@@ -89,7 +101,24 @@ export class WeatherService {
     }
     //console.log("** "+this.weather.lat);
   }
+  convertAll(data:any){
+    console.log(data);
+    //this.weatherList = [];
+    for(let w of data) {
+      let wthr = new Weather();
+      wthr.username=w.username;
+      wthr.name=w.name;
+      wthr.main=w.main;
+      wthr.country=w.country;
+      wthr.lat=w.lat;
+      wthr.lon=w.lon;
+      this.weatherList.push(wthr);
+    }
+  }
   getWeather(){
     return this.weather;
+  }
+  getFavList(){
+    return this.weatherList;
   }
 }

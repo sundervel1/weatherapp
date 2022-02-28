@@ -1,18 +1,22 @@
 package com.abc.controller;
 
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abc.dto.UserDetails;
+import com.abc.dto.Weather;
 import com.abc.service.WeatherService;
 
 @RestController
@@ -60,5 +64,17 @@ public class WeatherController {
 			}
 		}
 		return message;		
+	}
+	@PostMapping("/add")
+	public Weather add(@RequestBody Weather weather) {
+		System.out.println(" got " + weather);
+		Weather weatherSaved = wService.add(weather);
+		return weatherSaved;
+	}
+	@GetMapping("/getall/{uname}")
+	public List<Weather> getFavorites(@PathVariable("uname") String username){
+		System.out.println("user: "+username);
+		List<Weather> favList = wService.getFavorites(username);
+		return favList;		
 	}
 }
