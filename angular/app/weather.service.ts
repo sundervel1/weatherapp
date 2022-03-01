@@ -43,6 +43,20 @@ export class WeatherService {
        }
        );
   }
+  register(login: any) {
+      const header={'content-type': 'application/json'};
+      const body=JSON.stringify(login);
+      console.log('register--'+body);
+      this.http.post('http://localhost:8585/weather/register',body,{'headers':header})
+         .subscribe( data=>{
+          console.log("data register : " + data);
+          login.message="You have successfully registered with username: " + login.username;
+         }, error=>{
+           console.log('error in register call');
+         }
+
+         );
+    }
   addFavourite(weather: Weather) {
     const header={'content-type': 'application/json'};
     const body=JSON.stringify(weather);

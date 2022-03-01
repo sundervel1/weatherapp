@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LogoutComponent } from './logout/logout.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { RegisterComponent } from './register/register.component';
 //import {StorageServiceModule} from 'angular-webstorage-service';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
     ShowComponent,
     LoginComponent,
     LogoutComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

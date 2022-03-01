@@ -13,4 +13,6 @@ public interface WeatherService {
 
 	List<Weather> getFavorites(String username);
 
+	UserDetails register(UserDetails uDetails);
+
 }

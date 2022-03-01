@@ -39,4 +39,9 @@ public class WeatherServiceImpl implements WeatherService {
 		return list;
 	}
 
+	public UserDetails register(UserDetails uDetails) {
+		UserDetails userSaved = uDao.save(uDetails);
+		return userSaved;
+	}
+
 }

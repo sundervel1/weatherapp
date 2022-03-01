@@ -66,15 +66,21 @@ public class WeatherController {
 		return message;		
 	}
 	@PostMapping("/add")
-	public Weather add(@RequestBody Weather weather) {
+	public Weather add(@RequestBody Weather weather, HttpServletRequest request) {
 		System.out.println(" got " + weather);
 		Weather weatherSaved = wService.add(weather);
 		return weatherSaved;
 	}
 	@GetMapping("/getall/{uname}")
-	public List<Weather> getFavorites(@PathVariable("uname") String username){
+	public List<Weather> getFavorites(@PathVariable("uname") String username, HttpServletRequest request){
 		System.out.println("user: "+username);
 		List<Weather> favList = wService.getFavorites(username);
 		return favList;		
+	}
+	@PostMapping("/register")
+	public UserDetails register(@RequestBody UserDetails uDetails, HttpServletRequest request) {
+		System.out.println("register: "+uDetails);
+		UserDetails userSaved = wService.register(uDetails);
+		return userSaved;
 	}
 }
