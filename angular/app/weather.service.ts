@@ -51,6 +51,7 @@ export class WeatherService {
          .subscribe( data=>{
           console.log("data register : " + data);
           login.message="You have successfully registered with username: " + login.username;
+          this.loggedIn=false;
          }, error=>{
            console.log('error in register call');
          }
