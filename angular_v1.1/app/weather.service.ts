@@ -24,7 +24,7 @@ export class WeatherService {
     return this.imageUrl;
   }
   viewImage(image:any) {
-    console.log('------ view image');
+    console.log('------ view image');    
     this.http.get('http://localhost:8585/weather/files/'+image)
       .subscribe(
         res=>{
@@ -121,6 +121,7 @@ export class WeatherService {
     login.message="You have logged out of the system";
     this.weatherList = [];
     this.imageSuccessResponse ="";
+    this.imageUrl = "";
     // const header={'content-type': 'application/json'};
     // const body=JSON.stringify(login);
     // console.log('...-'+body);
