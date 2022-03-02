@@ -1,0 +1,16 @@
+Add bootstrap 
+
+1. 
+npm install bootstrap
+
+
+2. Add in angular.json
+
+"styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+
+
+3. restart ng serve
+

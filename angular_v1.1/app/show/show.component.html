@@ -1,0 +1,48 @@
+<h2>Get Weather Report</h2>
+<div class="text-danger" *ngIf="!service.loggedIn">
+    You are not logged in.
+ </div>
+ 
+ <div *ngIf="service.loggedIn">
+ <form (submit)="getWeather(fm)" class="form-group" ngNativeValidate #fm="ngForm">
+<table border="1" class="table">
+    <tr>
+        <td>City</td><td><input type="text" name="city" id="city" [(ngModel)]="weather.name" 
+                ngModel required class="form-control" #bCity="ngModel"/></td>
+    </tr>
+    <tr>
+        <td>Country</td><td><input type="text" name="country" id="country" 
+               [(ngModel)]="weather.country" ngModel required class="form-control" #bCountry="ngModel"/></td>
+    </tr>
+    <tr>
+        <td>API Key</td><td><input type="text" name="apikey" id="apikey" [(ngModel)]="weather.apikey" 
+                 ngModel required class="form-control" #bApiKey="ngModel" /></td>
+    </tr>
+    <tr>
+        <td colspan="2"><input type="submit" value="GET WEATHER REPORT"/></td>
+    </tr>
+</table>
+<div *ngIf="weather.lon!=0 && service.loggedIn">
+<table class="table">
+    <tr>
+        <th>City</th><th>Weather</th><th>Lat</th><th>Lon</th><th>Country</th>
+    </tr>
+    <tr>
+        <td>{{weather.name}}</td><td>{{weather.main}}</td><td>{{weather.lat}}</td><td>{{weather.lon}}</td><td>{{weather.country}}</td>
+    </tr>
+    <tr>
+        <td><br>
+            <form (submit)="addFavourite()">
+            <input type="submit" value="SAVE TO FAVOURITES"/>
+            </form>
+        </td>
+    </tr>
+    <tr *ngIf="savedFav">
+        <td><br> Record saved to Favorites
+        </td>
+    </tr>
+</table>
+</div>
+
+</form>
+</div>

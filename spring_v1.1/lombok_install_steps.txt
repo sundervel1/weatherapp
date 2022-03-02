@@ -1,0 +1,15 @@
+1. Put lombok.jar in a folder
+  ** close Eclipse **
+2. Open cmd in that folder
+3. Run command 
+   java -jar lombok.jar
+
+In the UI which opens 
+  click -> specify location
+    select folder of your eclipse installation
+  click -> install
+
+4. Start Eclipse 
+
+
+

@@ -1,0 +1,19 @@
+<h2>Register to Weather Application</h2>
+<form (submit)="register(fm)" class="form-group" ngNativeValidate #fm="ngForm">
+<table border="1" class="table">
+    <tr>
+        <td>Login id</td><td><input type="text" name="login" id="login" [(ngModel)]="login.username" 
+              ngModel required class="form-control" #bLogin="ngModel" /></td>
+    </tr>
+    <tr>
+        <td>Password</td><td><input type="password" name="password" id="password" [(ngModel)]="login.password"
+              ngModel required class="form-control" #bPassword="ngModel"/></td> 
+    </tr>
+    <tr>
+        <td colspan="2"><input type="submit" value="REGISTER"/></td>
+    </tr>
+</table>
+</form>
+<br>
+<div *ngIf="login.message">
+{{login.message}}

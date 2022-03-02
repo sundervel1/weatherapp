@@ -1,0 +1,17 @@
+<h2>Image upload Page</h2>
+<div *ngIf="service.loggedIn">
+<form>
+   <div class="form-group">
+        <input type="file" (change)="onImageUpload($event)" /> 
+        <br><br>
+        <div *ngIf="selected">
+          <input type="button" (click)="imageUploadAction()" value="Upload Image" class="btn1"/>
+        </div>
+   </div>
+
+</form>
+</div>
+<div class="text-danger" *ngIf="!service.loggedIn">
+    You are not logged in.
+ </div>
+{{service.imageSuccessResponse}}
