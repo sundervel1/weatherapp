@@ -7,6 +7,10 @@
     <tr *ngFor="let w of service.weatherList">
         <td>{{w.name}}</td><td>{{w.main}}</td><td>{{w.lat}}</td><td>{{w.lon}}</td><td>{{w.country}}</td>
     </tr>
+    <tr>
+        <td>User: </td><td>{{service.userName}}</td> 
+        <td><img src="{{service.imageUrl}}" onerror="this.onerror=null; this.src='assets/error.jpg'" width="400" height="300"></td>
+    </tr>
 </table>
 </div>
 <div class="text-danger" *ngIf="!service.loggedIn">
@@ -15,3 +19,4 @@
  <div *ngIf="service.weatherList.length==0 && service.loggedIn">
     Nothing to dispaly
 </div>
+<!-- <img src="som.jpg" onerror="this.onerror=null; this.src='assets/error.jpg'"> -->
