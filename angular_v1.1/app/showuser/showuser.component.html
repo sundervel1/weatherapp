@@ -1,14 +1,16 @@
+<h3>User details</h3>
 <div class="form-group" *ngIf="service.loggedIn">
-   <h3>User details</h3>
-   <input type="text" id="image" placeholder="Search Image" [(ngModel)]="image" name="image" />
+   <form ngNativeValidate>
+   <!-- <input type="text" id="image" required  placeholder="Search Image" [(ngModel)]="image" name="image" /> -->
    <input type="button" (click)="viewImage()" value="View Image" class="btn1">
    <div *ngIf=service.dbImage>
         <img [src]="service.dbImage">
     </div>
-
+    <br>
+    <img src="{{service.imageUrl}}" width="400" height="300">
+    </form>
 </div>
 <div class="text-danger" *ngIf="!service.loggedIn">
     You are not logged in
  </div>
  <!-- pic: {{service.imageUrl}} <br> -->
- <img src="{{service.imageUrl}}">

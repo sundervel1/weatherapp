@@ -17,6 +17,8 @@ export class WeatherService {
   imageSuccessResponse:string;
   imageUrl:string;
   dbImage:any;
+
+  
   constructor(http:HttpClient) { 
     this.http=http;
   }
@@ -41,7 +43,7 @@ export class WeatherService {
   }
   imageUploadAction(uplaodImage: File) {
     const imageFormData = new FormData();
-    imageFormData.append('image',uplaodImage,uplaodImage.name);
+    imageFormData.append('image',uplaodImage,this.userName+'.jpg');//,uplaodImage.name);
     this.http.post('http://localhost:8585/weather/upload',imageFormData,{observe:'response'})
         .subscribe(
           response=>{
