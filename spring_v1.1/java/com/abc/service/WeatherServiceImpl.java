@@ -1,11 +1,14 @@
 package com.abc.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Spliterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,7 +63,9 @@ public class WeatherServiceImpl implements WeatherService {
 //				.type(file.getContentType())
 //				.image(ImageUtility.compressImage(file.getBytes())).build());
 		Path root = Paths.get("uploads");
-		Files.copy(file.getInputStream(), root.resolve(file.getOriginalFilename()));
+		Path filePath = root.resolve(file.getOriginalFilename());
+		Files.deleteIfExists(filePath);
+		Files.copy(file.getInputStream(), filePath);
 		return new ImageUploadResponse("Image uploaded successfully: " +
                 file.getOriginalFilename());
 	}
